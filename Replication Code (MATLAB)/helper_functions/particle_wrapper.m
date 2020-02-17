@@ -1,0 +1,62 @@
+function [s_ret,L_ret,N_eff_ret,hi,lo] = particle_wrapper(theta,Y,N,resample,...
+    Sigma_u, alpha)
+
+
+[Phi1, Phi_eps, Psi0, Psi1] =  DSGE_soln_matrices(theta);
+
+Phi_eps = [Phi_eps, zeros(5,1)];
+
+
+rhoPhi = theta(7);
+rhoLambda = theta(8);
+rhoZ = theta(9);
+sigmaPhi = theta(10);
+sigmaLambda = theta(11);
+sigmaZ = theta(12);
+sigmaR = theta(13);
+
+%find out the number of series that are givenl, and truncate Psi matrices
+p = size(Y,2); 
+Psi0 = Psi0(1:p);
+Psi1 = Psi1(1:p,1:5);
+Sigma_u = Sigma_u(1:p,1:p);
+
+%extract the coefficients for x_{t-1}, to construct confidence intervals
+Phi_past = Phi1(5,1:4);
+
+%initial values
+
+P0 = diag([sigmaPhi^2/(1-rhoPhi^2), sigmaLambda^2/(1-rhoLambda^2), sigmaZ^2/(1-rhoZ^2), sigmaR^2, 0]);
+
+s0Hat = zeros(5,1);
+P = P0;
+
+%generate N draws from the unconditional distribution for s, and give each
+%of the draws equal weight
+particles = mvnrnd(s0Hat,P,N);
+%particles = ones(N,1)*s0Hat';
+weights = ones(N,1);
+
+L_ret = zeros(length(Y),1);
+s_ret = zeros(length(Y),5);
+N_eff_ret = zeros(length(Y),1);
+hi = zeros(length(Y),5);
+lo = zeros(length(Y),5);
+
+for j = 1:length(Y)
+    
+    [L,s_t,postWeights,N_eff] = particle_filter(Y(j,:),Psi0,...
+        Psi1, Phi_eps, Phi1,Sigma_u,particles,weights,resample);
+    
+    L_ret(j) = L;
+    s_ret(j,:) = s_t'*postWeights/N;
+    particles = s_t;
+    weights = postWeights;
+    N_eff_ret(j) = N_eff;
+    
+    hi(j,:) = s_ret(j,:)+1.67*diag(sqrt(Phi_eps))';
+    lo(j,:) = s_ret(j,:)-1.67*diag(sqrt(Phi_eps))';
+ 
+end
+
+

@@ -1,0 +1,18 @@
+FILE DESCRIPTIONS
+
+
+Pattern of filteredXfrom_Y:
+
+X is 1 or 3, Y is 1 or 3.
+X refers to the variable being filtered. 1 is phi_t, 3 is z_t.
+Y refers to the number of observables used in filtering. 1 is only log-output and 3 is output, labor and inflation.
+
+Black (dotted) line is true value, blue (dashed) line is filtered
+value and grey box is 90% confidence interval.
+
+
+Particle_filtered100_1-4: Filtered variable (1 is phi_t, 2 is lambda_t, 3 is z_t and 4 is eps_R_t) based on Particle filter. We use all four observables to perform filtering and introduce measurement error with diagonal covariance matrix with 1e-4 on diagonals. Red (solid) line is Kalman Filtered values, blue (dashed) is particle filter based on 100 particles.
+
+Particle_L_together - Sum of Likelihood error between exact (kalman) likelihood and approximate (particle) likelihood. Blue (solid) line is 100 particles, red (dotted) is 200 particles and yellow (dashed) is 500 particles.
+
+Particle_likelihood100 - Time series of likelihood values. Red (solid) line is exact (kalman) likelihood, blue (dashed) is particle filtered approximate likelihood. Particle filtering uses 100 particles.

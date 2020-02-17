@@ -1,0 +1,10 @@
+FILE DESCRIPTIONS
+
+These graphs show the output of sequential monte carlo algorithm.
+
+To propogate the particles forward, I use RWMH. Number of particles
+is 2*1024, 500 stages, with bending coefficient 3. Target
+acceptance rate is .25
+
+Both plots are waterfall plots. For N_phi=1, the draws are from the
+prior, culminiting is N_phi=500 when draws are from the posterior.

@@ -1,0 +1,6 @@
+FILE DESCRIPTIONS
+
+
+samp_distr_mle - sampling distribution of Maximum Likelihood estimator found via the Kalman filter. Blue (dotted) line is sample size 80 while Black (dashed) line is sample size 200. Red (solid) is true value. Note that for this one, the range of zeta was from .45 - .95 as opposed to .2-.95. Zeta values too small introduced singularities.
+
+likelihood - the likelihood function for a single dataset

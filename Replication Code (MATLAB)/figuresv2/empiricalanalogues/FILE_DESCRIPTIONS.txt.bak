@@ -1,0 +1,17 @@
+FILE DESCRIPTIONS
+
+
+For all - plot 1 refers to output, 2 to labor, 3 to inflation, and 4 to interest rates.
+
+
+Spectrum 1-4: red (dotted) line is spectrum based on estimated VAR coefficients. Blue (solid) line is smoothed spectrum estimate using Gaussian kernel with standard deviation 0.15. Gray shading is business cycle frequencies (0.196 - 0.785).
+
+sample_autocorr_with_output: Cross-correlation functions (with output) based on data. Black (solid) is interest rates, red (dashed) is inflation, and blue (dotted) is labor.
+
+empirical_autocorr_with_output: Same as above, but CCF is based on estimated VAR coefficients. 
+
+irf_signrestrictions1-4: set-identified Impulse response functions to a monetary policy shock. The identifying assumptions are that inflation decreases and interest rates increase (both for 4 quarters).
+
+cons_share_S_ND: Consumption share of nominal GDP. Numerator is sum of Personal onsumption expenditures, services seasonally adjusted and annualized (PCESV) and Personal consumption expenditures, nondurable goods, seasonally adjusted and annualized (PCND). Denominator is nominal GDP (GDP). Date range is from January 1965 to October 2014. Observations are quarterly.
+
+lab_share_full: log of labor share of nominal GDP. Numerator is Compensation of employees, seasonally adjusted (COE). Denominator is nominal GDP (GDP). Date range is January 1965 - October 2014. 

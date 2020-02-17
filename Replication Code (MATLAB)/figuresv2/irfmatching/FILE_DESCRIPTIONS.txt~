@@ -1,0 +1,18 @@
+FILE DESCRIPTIONS
+
+figure1_1 - Impulse Response function to output from a monetary policy shock. Blue (solid) line is impulse response based on VAR approximation of DSGE model (infinite data). Black (dashed) line is the actual IRF from the structural DSGE model.
+
+figure1_3 - Impulse Response function to inflation from a monetary policy shock. Blue (solid) line is impulse response based on VAR approximation of DSGE model (infinite data). Black (dashed) line is the actual IRF from the structural DSGE model.
+
+figure2_1 - Sensitivity of IRF to zeta_p. Blue (solid) is IRF based on VAR approximation to DSGE model. Black (dashed) is state-space irf with zeta = .65, red (dotted) is state-space irf with zeta = .5.
+
+DSGE_VAR_matching - IRF matching based on impulse response functions from state-space representation of DSGE model. Black (dashed) is based on data with sample size 200, blue (dotted) is based on data with sample size 80. Red (solid) line represents the true value (zeta_p = .65).
+
+
+For IRF matching, the method is:
+
+1.) Simulate dataset
+2.) Calcule Phi and Sigma by OLS, and use them to construct IRF (based on cholesky factorization).
+3.) Over a grid of zeta_p values, calculate model IRFs (either based on state-space representation or VAR approximation of state-space)
+4.) Record mainimum distance based on 10 periods of IRF
+5.) Repeat 1-4 for 100 datasets

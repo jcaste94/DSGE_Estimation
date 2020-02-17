@@ -1,0 +1,11 @@
+FILE DESCRIPTIONS
+
+For all plots, I use 10,000 burn-in samples and 30,000 draws from the posterior. The initial draw is from the prior. Candidates are drawn Random Walk with variance the inverse variance of posterior mode. c is .075 and acceptance probability is ......
+
+Plots are for sigma_phi and zeta_p, which are indicated by graph names.
+
+density - Posterior density (after burn-in). Blue (solid) line is posterior density, Black (dashed) line is prior density and grey (dotted) line is posterior mean.
+
+draw - Raw draws for all 40,000 draws. 
+
+recursive_mean - recursive mean of draws after burn-in.

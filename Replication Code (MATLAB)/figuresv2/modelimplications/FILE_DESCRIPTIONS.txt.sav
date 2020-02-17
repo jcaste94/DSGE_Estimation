@@ -1,0 +1,21 @@
+FILE DESCRIPTIONS
+
+These graphs show the empirical implications of the specified dsge model.
+
+autocorr_1: autocorrelation of log-output.
+
+autocorr_with_output: Autocorrelation with log-output. Blue (solid)
+is labor, black (dotted) is inflation, green (dashed) is interest
+rates.
+
+FEVD_1-4: Forecast error variance decomposition of observables
+(1-output, 2-labor, 3-inflation, 4-interest rates) based on the
+four structural shocks. Plots are cumulative forecast error
+variances, with darkest to lightest: phit_t, lambda_t, z_t,
+eps_R_t.
+
+IRF_1_1-4: Impulse response functions of output from each of the four structural shocks. Order from 1-4 is phit_t, lambda_t, z_t, eps_R_t (preference, mark-up, technology, monetary policy). On all graphs, blue (solid) line is impulse response function, grey (dotted) line is 0.
+
+spectrum_stacked1-4: Model implied cumulative spectrums of all
+observables (1-output, 2-labor, 3-inflation, 4-interest rates)
+based on the four structural shocks (order is same as FEVD).

@@ -1,0 +1,61 @@
+% Readme for ANU lecture 
+% - Estimation of DSGE Model
+% 6/16/2013
+
+%4/1/2015 - Jacob Warren
+%NOTE: I changed the kalman function to reflect the linear model (deleted R and transposed A)
+		     dsgeliki to use our data and model
+		     prior to reflect our priors
+
+There are 7 main files in the folder. 
+
+1) Candidate.m                 : It computes the candidate density for Metropolis-Hastings algorith, 
+                                 The output (MH_candidate.mat) is saved in the folder ``Matfiles".
+	 
+2) MetropolisHastings.m        : It runs the Metropolis-Hastings algorithm. It save the posterior draws 
+                                 and logposterior density (mhdraws.mat) in the folder "Matfiles". The file 
+                                 produces some diagnostic graph.
+
+3) VarianceDecomposition.m     : After loading mhdraws.mat, the file computes and graph the contribution 
+                                 of technology and preference shocks to the variance of detrended GDP and 
+                                 hours worked (from horizon 1 to horizon Nhor).
+
+4) ImpulseResponse.m           : After loading mhdraws.mat, the file computes and graph the response of  
+                                 selected variables to technology and preference shocks.
+
+5) PosteriorPredictiveChecks.m : After loading mhdraws.mat, the file computes and graphs posterior predictive 
+                                 checks for GDP growth and hours worked.
+
+6) Forecasting.m               : After loading mhdraws.mat, the file computes and graphs DSGE based forecasts  
+                                 (median and 90% credible set) for output and hours worked.
+
+7) marginal_data_density.m     : After loading mhdraws.mat, the file computes the marginal data density. The 
+                                 marginal data density in the workspace is the variable mdd.
+ 
+
+These files use a number of procedures collected in the folder "Mfiles". The most relevant files are
+
+
+	a) model_solution.m  : Takes as inputs the vector of structural parameters. Returns the coefficient 
+                               matrices of the log-linear approximate solution of the DSGE model. Please, 
+                               refer to Sims () for details on the procedure.
+
+	b) sysmat.m          : Takes as inputs the solution of the DSGE model and the vector of structural parameters.
+                               Returns the matrices for the state space representation. 
+
+	c) kalman.m          : Takes as inputs the state space matrices. Returns the likelihood function and the 
+                               filtered states. 
+
+	d) dsgeliki.m        : Takes as inputs the vector of structural parameters. Returns the value of the 
+                               log-likelihood function.
+
+	e) prior.m           : Takes as inputs the vector of structural parameters. Returns the value of the
+                               log-prior. Modify this file in case you need to change the prior distribution.  
+	
+
+
+The folder contains two additional subfolders: "LRE" and "Optimization Routines". These two folders collect files
+to solve the linear rational expectation model and to find the posterior mode. 
+
+
+	
