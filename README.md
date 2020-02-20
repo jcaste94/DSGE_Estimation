@@ -2,5 +2,7 @@
 
 ## Estimation of DSGE Models: The Likelihood Function
 
-PS3 - problem 2
+### PS3 - problem 2
+
+Generate data from solved DSGE model. Run Kalman filter to extract the hidden states. 
  
