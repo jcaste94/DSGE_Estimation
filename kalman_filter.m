@@ -4,12 +4,13 @@ function [L,hi,lo,postMean,postVar] = kalman_filter(Y,Psi0,...
 %and lo) of an "alpha" percentage credible set, and E(s_t+1 | Y_t) (s), in
 %addition to the posterior mean and variance of the state|Y
 
-
-%forecasting step
+% 2.
+% forecasting step
 sHat_t = Phi1*s0Hat;
 P_t = Phi1'*P*Phi1 + Phi_eps*Phi_eps';
 
-%predicting Y:
+% 3. 
+% predicting Y:
 yHat_t = Psi0 + (Psi1*sHat_t)';
 F_t = Psi1*P_t*Psi1' + Sigma_u;
 v = Y-yHat_t; 
@@ -17,6 +18,7 @@ v = Y-yHat_t;
 %compute likelihood
 L = mvnpdf(v,0,F_t);
 
+% 4.
 %update using Bayes Theorem (updated values are the prior for next period's
 %iteration of the filter as well)
 postMean = sHat_t + P_t*Psi1'*inv(F_t)*v';
